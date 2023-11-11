@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project Akhir Website Biodata | Vanilla Javascript</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <audio id="musikPlayer">
+        <source src="y2mate.com - Sheila On 7  Selamat Datang.mp3" type="audio/mp3">
+    </audio>
+
+    <header>
+        <div class="logo-container">
+            <i class="fas fa-moon" id="darkModeToggle"></i>
+            <a href="#" class="logo">M Haikal Al Farizi</a>
+        </div>
+        <ul>
+            <li><a href="#sec" class="active" id="readButton">Read</a></li>
+            <li><button id="stopMusicButton">&#127925;</button></li>
+        </ul>
+    </header>
+    <section>
+        <div class="clock" id="clock">
+            <i class="fas fa-clock"></i>
+            <span id="time"></span>
+            <br>
+            <i class="fas fa-calendar-alt"></i>
+            <span id="date"></span>
+        </div>
+        <h2 id="text"><span>Hello Mr.Fadhil</span><br>Welcome</h2>
+        <img src="image/bird1.png" id="bird1">
+        <img src="image/bird2.png" id="bird2">
+        <img src="image/forest.png" id="forest">
+        <a href="https://haikalaf123.github.io/web-biodata/#home" id="btn">Explore</a>
+        <img src="image/rocks.png" id="rocks">
+        <img src="image/water.png" id="water">
+    </section>
+    <div class="sec" id="sec">
+        <h2>Selamat Datang Di Website Biodata Saya😊</h2>
+        <p>Assalamu'alaikum wr. wbr. 🌟 Salam sejahtera bagi kita semua dan terimakasih kepada Bapak Dosen Pak Fadhil M Basysyar, M.Kom 🙏 
+            yang telah mengunjungi website biodata saya. 🖥️ Perkenalkan Nama saya Haikal Al Farizi dari kelas SI-KIP-C2 dengan NIM 43230144. 
+            📚 Saya merasa sangat senang dan terhormat atas kunjungan Bapak Dosen ke website saya. 🤗 Semoga website ini bermanfaat dan memperkenalkan 
+            diri saya dengan baik. 💼 Website ini saya rancang dengan tambahan home simple login serta beberapa icon seperti musik, jam, dan tanggal 
+            serta mode siang atau malam pada icon moon. 
+            Ide kreatif ini adalah hasil pemikiran saya yang saya gabungkan dengan panduan dari sumber-sumber di YouTube. Saya berharap ke depannya bisa 
+            lebih kreatif dengan ide yang lebih baik. Semoga Bapak suka dengan hasil karya saya.
+            Terima kasih atas kunjungan Bapak Dosen dan seluruh pengunjung website biodata saya. 🙌 Wassalamu'alaikum wr. wbr. 🌺  </p>
+    </div>
+
+    <script>
+        const musikPlayer = document.getElementById('musikPlayer');
+        const readButton = document.getElementById('readButton');
+        const stopMusicButton = document.getElementById('stopMusicButton');
+        const timeElement = document.getElementById('time');
+        const dateElement = document.getElementById('date');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const year = now.getFullYear();
+
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+            dateElement.textContent = `${day}/${month}/${year}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        darkModeToggle.addEventListener('click', function () {
+            // Get the link you want to redirect to
+            const link = 'website-simple-login2/index.html';
+
+            // Navigate to the specified link
+            window.location.href = link;
+        });
+
+        readButton.addEventListener('click', function () {
+            musikPlayer.play();
+        });
+
+        stopMusicButton.addEventListener('click', function () {
+            musikPlayer.pause();
+        });
+
+        window.addEventListener('scroll', function () {
+            let value = window.scrollY;
+            text.style.top = 20 + value * -0.1 + '%';
+            bird1.style.top = value * -1.5 + 'px';
+            bird1.style.left = value * 2 + 'px';
+            bird2.style.top = value * -1.5 + 'px';
+            bird2.style.left = value * -5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            rocks.style.top = value * -0.12 + 'px';
+            forest.style.top = value * 0.25 + 'px';
+            header.style.top = value * 0.5 + 'px';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project Akhir Website Biodata | Vanilla Javascript</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <audio id="musikPlayer">
+        <source src="y2mate.com - All We Are  Richello Lirik dan Terjemahan Indonesia   Lagu Penyemangat Barat.mp3" type="audio/mp3">
+    </audio>
+
+    <header>
+        <a href="#" class="Mhaikal">M Haikal Al Farizi</a>
+        <ul>
+            <li><a href="#sec" class="active" id="readButton">Read</a></li>
+            <li><button id="stopMusicButton">&#127925;</button></li>
+            <i class="fas fa-sun" id="darkModeToggle"></i>
+        </ul>
+    </header>
+    <section>
+        <img src="stars.png" id="stars">
+        <img src="moon.png" id="moon">
+        <img src="mountains_behind.png" id="mountains_behind">
+        <div class="clock" id="clock">
+            <i class="fas fa-clock"></i>
+            <span id="time"></span>
+            <br>
+            <i class="fas fa-calendar-alt"></i>
+            <span id="date"></span>
+        </div>
+        <h2 id="text">Welcome To My Website</h2>
+        <a href="https://haikalaf123.github.io/web-biodata/#home" id="btn">Explore</a>
+        <img src="mountains_front.png" id="mountains_front">
+    </section>
+    <div class="sec" id="sec">
+        <h2>Selamat Datang Di Website Biodata Saya😊</h2>
+        <p>Assalamu'alaikum wr. wbr. 🌟 Salam sejahtera bagi kita semua dan terimakasih kepada Bapak Dosen Pak Fadhil M Basysyar, M.Kom 🙏 
+            yang telah mengunjungi website biodata saya. 🖥️ Perkenalkan Nama saya Haikal Al Farizi dari kelas SI-KIP-C2 dengan NIM 43230144. 
+            📚 Saya merasa sangat senang dan terhormat atas kunjungan Bapak Dosen ke website saya. 🤗 Semoga website ini bermanfaat dan memperkenalkan 
+            diri saya dengan baik. 💼 Website ini saya rancang dengan tambahan home simple login serta beberapa icon seperti musik, jam, dan tanggal 
+            serta mode siang atau malam pada icon moon. 
+            Ide kreatif ini adalah hasil pemikiran saya yang saya gabungkan dengan panduan dari sumber-sumber di YouTube. Saya berharap ke depannya bisa 
+            lebih kreatif dengan ide yang lebih baik. Semoga Bapak suka dengan hasil karya saya.
+            Terima kasih atas kunjungan Bapak Dosen dan seluruh pengunjung website biodata saya. 🙌 Wassalamu'alaikum wr. wbr. 🌺</p>
+    </div>
+
+    <script>
+        const musikPlayer = document.getElementById('musikPlayer');
+        const readButton = document.getElementById('readButton');
+        const stopMusicButton = document.getElementById('stopMusicButton');
+        const timeElement = document.getElementById('time');
+        const dateElement = document.getElementById('date');
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0'); // Tambahkan ikon tanggal
+            const month = (now.getMonth() + 1).toString().padStart(2, '0'); // Tambahkan ikon bulan (perlu +1 karena bulan dimulai dari 0)
+            const year = now.getFullYear();
+            const darkModeToggle = document.getElementById('darkModeToggle');
+
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+            dateElement.textContent = `${day}/${month}/${year}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        darkModeToggle.addEventListener('click', function () {
+            // Get the link you want to redirect to
+            const link = '#';
+
+            // Navigate to the specified link
+            window.location.href = link;
+        });
+
+        let stars = document.getElementById('stars');
+        let moon = document.getElementById('moon');
+        let mountains_behind = document.getElementById('mountains_behind');
+        let text = document.getElementById('text');
+        let btn = document.getElementById('btn');
+        let mountains_front = document.getElementById('mountains_front');
+        let header = document.querySelector('header');
+
+        readButton.addEventListener('click', function () {
+            musikPlayer.play();
+        });
+
+        stopMusicButton.addEventListener('click', function () {
+            musikPlayer.pause();
+            
+        });
+
+        window.addEventListener('scroll', function () {
+            let value = window.scrollY;
+            stars.style.left = value * 0.25 + 'px';
+            moon.style.top = value * 1.05 + 'px';
+            mountains_behind.style.top = value * 0.5 + 'px';
+            mountains_front.style.top = value * 0 + 'px';
+            text.style.marginRight = value * 4 + 'px';
+            text.style.marginTop = value * 1.5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            header.style.top = value * 0.5 + 'px';
+        });
+    </script>
+</body>
+
+</html>
